@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DM Sans display overrides — tighter tracking at large weights */
+.font-display {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(135deg, #4e8ec9 0%, #2360b8 40%, #1a449a 70%, #0f2d6b 100%);
+  min-height: 100vh;
+  padding: 16px;
+  font-family: var(--font-jakarta), sans-serif;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    padding: 28px;
+  }
+}
+
+/* Page content frame */
+.page-frame {
+  background: #ffffff;
+  border-radius: 28px;
+  overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-shadow:
+    0 40px 80px rgba(10, 30, 80, 0.45),
+    0 16px 40px rgba(10, 30, 80, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.12);
+  position: relative;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #ebf4ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #2762c8;
+  border-radius: 3px;
+}
+
+/* Text selection */
+::selection {
+  background: rgba(39, 98, 200, 0.18);
+  color: #1a3a6e;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Utility: blur text reveal */
+.reveal-blur {
+  filter: blur(16px);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    filter 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-blur.in-view {
+  filter: blur(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Three.js canvas */
+canvas {
+  display: block;
+  outline: none;
+}

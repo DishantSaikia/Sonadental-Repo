@@ -1,0 +1,44 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# env files — never commit secrets
+.env
+.env.local
+.env.*.local
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+
+# temp / dev artifacts
+/temporary screenshots/
+dev-server.log
+dev-server-err.log
+dev-server-verify.log
+dev-server-verify.err.log
+next-start.log
+next-start.err.log
+server.log
+tmp-*.png
+tsconfig.tsbuildinfo
+next-env.d.ts
+
+# duplicate assets in root (originals live in /public)
+/tooth_real_transparent_alpha_final.png
+/transparent_logo.png
