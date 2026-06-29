@@ -5,7 +5,7 @@ export const CLINIC = {
   address: '4/1724-A, Rama Block, Bhola Nath Nagar Ration Office Road, Shahdara, Delhi – 110032',
   phones: ['+91 98115 76067', '+91 88514 43263'],
   phonesRaw: ['+919811576067', '+918851443263'],
-  email: 'contact@sonadental-maxfac.com',
+  email: 'contactclinic@sonadental.in',
   established: 1994,
   mapsUrl:
     'https://www.google.com/maps/search/?api=1&query=Sona+Dental+Maxillofacial+Clinic+Bhola+Nath+Nagar+Shahdara+Delhi+110032',
