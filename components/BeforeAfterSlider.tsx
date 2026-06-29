@@ -4,11 +4,13 @@ import { useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 
 interface BeforeAfterSliderProps {
+  beforeSrc?: string
+  afterSrc?: string
   beforeLabel?: string
   afterLabel?: string
 }
 
-export default function BeforeAfterSlider({ beforeLabel = 'Before', afterLabel = 'After' }: BeforeAfterSliderProps) {
+export default function BeforeAfterSlider({ beforeSrc, afterSrc, beforeLabel = 'Before', afterLabel = 'After' }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50)
   const [isDragging, setIsDragging] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -53,66 +55,40 @@ export default function BeforeAfterSlider({ beforeLabel = 'Before', afterLabel =
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
     >
-      {/* BEFORE — left side (discoloured/before) */}
+      {/* BEFORE — left side */}
       <div className="absolute inset-0">
-        <div
-          className="w-full h-full"
-          style={{
-            background:
-              'linear-gradient(135deg, #e8c8a0 0%, #d4a870 40%, #c89060 70%, #b07840 100%)',
-          }}
-        >
-          {/* Mock teeth "before" pattern */}
-          <div className="absolute inset-0 flex items-center justify-center">
+        {beforeSrc ? (
+          <img src={beforeSrc} alt="Before" className="w-full h-full object-cover" draggable={false} />
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ background: 'linear-gradient(135deg, #e8c8a0 0%, #d4a870 40%, #c89060 70%, #b07840 100%)' }}
+          >
             <svg viewBox="0 0 200 80" className="w-full max-w-[280px] opacity-40">
               {[15, 45, 75, 105, 130].map((x, i) => (
-                <rect
-                  key={i}
-                  x={x}
-                  y={i % 2 === 0 ? 10 : 18}
-                  width={i === 2 ? 28 : 22}
-                  height={i % 2 === 0 ? 52 : 44}
-                  rx="5"
-                  fill="#c8a060"
-                  stroke="#b08040"
-                  strokeWidth="1"
-                />
+                <rect key={i} x={x} y={i % 2 === 0 ? 10 : 18} width={i === 2 ? 28 : 22} height={i % 2 === 0 ? 52 : 44} rx="5" fill="#c8a060" stroke="#b08040" strokeWidth="1" />
               ))}
             </svg>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* AFTER — right side clipped (bright white teeth) */}
-      <div
-        className="absolute inset-0"
-        style={{ clipPath: `inset(0 0 0 ${position}%)` }}
-      >
-        <div
-          className="w-full h-full"
-          style={{
-            background:
-              'linear-gradient(135deg, #f0f6ff 0%, #e0eeff 40%, #d0e8ff 70%, #c0dcff 100%)',
-          }}
-        >
-          <div className="absolute inset-0 flex items-center justify-center">
+      {/* AFTER — right side clipped */}
+      <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${position}%)` }}>
+        {afterSrc ? (
+          <img src={afterSrc} alt="After" className="w-full h-full object-cover" draggable={false} />
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ background: 'linear-gradient(135deg, #f0f6ff 0%, #e0eeff 40%, #d0e8ff 70%, #c0dcff 100%)' }}
+          >
             <svg viewBox="0 0 200 80" className="w-full max-w-[280px] opacity-60">
               {[15, 45, 75, 105, 130].map((x, i) => (
-                <rect
-                  key={i}
-                  x={x}
-                  y={i % 2 === 0 ? 10 : 18}
-                  width={i === 2 ? 28 : 22}
-                  height={i % 2 === 0 ? 52 : 44}
-                  rx="5"
-                  fill="#f5faff"
-                  stroke="#c0d8f8"
-                  strokeWidth="1"
-                />
+                <rect key={i} x={x} y={i % 2 === 0 ? 10 : 18} width={i === 2 ? 28 : 22} height={i % 2 === 0 ? 52 : 44} rx="5" fill="#f5faff" stroke="#c0d8f8" strokeWidth="1" />
               ))}
             </svg>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Divider line */}

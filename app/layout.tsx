@@ -29,6 +29,10 @@ export const metadata: Metadata = {
     'Established in 1994, Sona Dental & Maxillofacial Clinic in Shahdara, Delhi offers family dentistry, root canal treatment, dental implants, orthodontic care, cosmetic dentistry and oral and maxillofacial surgery.',
   keywords:
     'dental clinic Shahdara Delhi, maxillofacial surgery Delhi, dental implants, root canal treatment, cosmetic dentistry, orthodontics, oral surgery Delhi',
+  icons: {
+    icon: '/transparent_logo.png',
+    apple: '/transparent_logo.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -334,7 +334,7 @@ function ToothImage({ ready, toothY, fillWidth }: { ready: boolean; toothY: any;
         animate={ready ? { y: [0, -7, 0], rotateZ: [0, 0.84, 0], scale: [1, 1.013, 1] } : { y: 0, rotateZ: 0, scale: 1 }}
         transition={ready ? { duration: 11, ease: 'easeInOut', repeat: Infinity } : {}}
         style={{
-          width: fillWidth ? '100%' : 'clamp(180px, 50vw, 205px)',
+          width: fillWidth ? '100%' : 'clamp(186px, 59vw, 254px)',
           maxHeight: fillWidth ? undefined : 282,
           height: 'auto',
           objectFit: 'contain',
@@ -624,7 +624,12 @@ export default function Hero() {
               WebkitBackdropFilter: 'blur(12px)',
             }}
           >
-            <ToothImage ready={ready} toothY={toothY} />
+            <div
+              className="relative z-10 flex items-center justify-center"
+              style={{ height: 'calc(100% - 24px)', aspectRatio: '928 / 1144' }}
+            >
+              <ToothImage ready={ready} toothY={toothY} fillWidth />
+            </div>
           </div>
         </div>
 
